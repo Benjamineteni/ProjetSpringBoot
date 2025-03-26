@@ -1,6 +1,7 @@
-package com.example.mon_projet.Controller;
+package com.example.mon_projet.controller;
 
-import com.example.mon_projet.model.product;
+import com.example.mon_projet.model.Product;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,12 +16,15 @@ public class HelloController{
         return "hello word";
     }
 
+
     @PostMapping("/create-product")
-    public product addProduct(@RequestBody product product) {
+
+    public ResponseEntity<Product>addProduct(@RequestBody Product product) {
 
         String id = UUID.randomUUID().toString();
         product.setId(id);
 
-        return product;
+        return ResponseEntity.ok(product);
     }
+
 }
